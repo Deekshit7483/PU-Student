@@ -1,7 +1,13 @@
-.dashboard {
-    display: flex;
-    min-height: 100vh;
+/* General styles */
+body {
+    margin: 0;
     font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
   }
   
   .sidebar {
@@ -34,13 +40,17 @@
   
   .main-content {
     flex-grow: 1;
-    padding: 30px;
+    padding: 20px;
     background-color: #f4f4f4;
+    overflow-x: auto;
   }
   
   button, input, select {
-    margin: 5px 0;
-    padding: 10px;
+    margin: 8px 0;
+    padding: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -61,6 +71,7 @@
     border-collapse: collapse;
     margin-top: 20px;
     background-color: white;
+    font-size: 0.95rem;
   }
   
   table, th, td {
@@ -68,6 +79,62 @@
   }
   
   th, td {
-    padding: 12px;
+    padding: 10px;
     text-align: left;
   }
+  
+  /* Modal */
+  .modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+    }
+  
+    .sidebar ul {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin: 0;
+    }
+  
+    .sidebar li {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+  
+    .main-content {
+      padding: 15px;
+    }
+  
+    table, th, td {
+      font-size: 0.85rem;
+    }
+  
+    button, input, select {
+      font-size: 1rem;
+    }
+  }
+  
