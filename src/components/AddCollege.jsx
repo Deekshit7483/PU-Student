@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddCollege.css';
 import { Player } from '@lottiefiles/react-lottie-player';
-import collegeAnimation from '../assets/animation.json'; // Download from LottieFiles and place in src
+import collegeAnimation from '../assets/college.json';
 
 const AddCollege = ({ addCollege }) => {
   const [name, setName] = useState('');

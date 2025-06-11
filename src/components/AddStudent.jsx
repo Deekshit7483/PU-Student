@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddStudent.css';
 import { Player } from '@lottiefiles/react-lottie-player';
-import studentAnimation from '../assets/animation.json';
+import studentAnimation from '../assets/student.json';
 
 const AddStudent = ({ addStudent, colleges }) => {
   const [name, setName] = useState('');

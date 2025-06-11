@@ -4,7 +4,8 @@ import './CollegeList.css';
 const CollegeList = ({ colleges }) => {
   const getSeatStatus = (remaining, total) => {
     const percent = (remaining / total) * 100;
-    if (percent < 40) return { text: 'Almost Full', color: 'error', percent };
+    if (percent < 1) return { text: 'No Seats', color: 'error', percent };
+    else if (percent < 40) return { text: 'Almost Full', color: 'error', percent };
     else if (percent <= 80) return { text: 'Limited Seats', color: 'warning', percent };
     else return { text: 'Seats Available', color: 'success', percent };
   };

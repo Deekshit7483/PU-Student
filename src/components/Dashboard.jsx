@@ -36,6 +36,13 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      {/* Mobile overlay */}
+      <div
+        className={`overlay ${menuOpen ? 'show' : ''}`}
+        onClick={() => setMenuOpen(false)}
+      ></div>
+
+      {/* Sidebar */}
       <aside className={`sidebar ${menuOpen ? 'open' : ''}`}>
         <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
           <div className="bar"></div>
@@ -44,17 +51,18 @@ const Dashboard = () => {
         </div>
         <h2>📚 Dashboard</h2>
         <ul>
-          <li className={activeTab === 'home' ? 'active-tab' : ''} onClick={() => setActiveTab('home')}>🏠 Home</li>
-          <li className={activeTab === 'add-student' ? 'active-tab' : ''} onClick={() => setActiveTab('add-student')}>👨‍🎓 Add Student</li>
-          <li className={activeTab === 'add-college' ? 'active-tab' : ''} onClick={() => setActiveTab('add-college')}>🏫 Add College</li>
-          <li className={activeTab === 'colleges' ? 'active-tab' : ''} onClick={() => setActiveTab('colleges')}>📋 View Colleges</li>
-          <li className={activeTab === 'students' ? 'active-tab' : ''} onClick={() => setActiveTab('students')}>👥 View Students</li>
+          <li className={activeTab === 'home' ? 'active-tab' : ''} onClick={() => { setActiveTab('home'); setMenuOpen(false); }}>🏠 Home</li>
+          <li className={activeTab === 'add-student' ? 'active-tab' : ''} onClick={() => { setActiveTab('add-student'); setMenuOpen(false); }}>👨‍🎓 Add Student</li>
+          <li className={activeTab === 'add-college' ? 'active-tab' : ''} onClick={() => { setActiveTab('add-college'); setMenuOpen(false); }}>🏫 Add College</li>
+          <li className={activeTab === 'colleges' ? 'active-tab' : ''} onClick={() => { setActiveTab('colleges'); setMenuOpen(false); }}>📋 View Colleges</li>
+          <li className={activeTab === 'students' ? 'active-tab' : ''} onClick={() => { setActiveTab('students'); setMenuOpen(false); }}>👥 View Students</li>
         </ul>
       </aside>
 
+      {/* Main content */}
       <main className="main-content">
         {activeTab === 'home' && (
-          <div className="home-section">
+          <div className="home-section fade-in">
             <div className="lottie-wrapper">
               <Lottie animationData={dashboardAnimation} loop={true} />
             </div>
