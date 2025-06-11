@@ -1,9 +1,12 @@
+// Dashboard.js
 import React, { useState } from 'react';
 import AddStudent from './AddStudent';
 import AddCollege from './AddCollege';
 import CollegeList from './CollegeList';
 import StudentList from './StudentList';
 import StudentReport from './StudentReport';
+import Lottie from 'lottie-react';
+import dashboardAnimation from '../assets/animation.json';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -11,6 +14,7 @@ const Dashboard = () => {
   const [colleges, setColleges] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [activeTab, setActiveTab] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const addCollege = (college) => setColleges([...colleges, college]);
   const addStudent = (student) => setStudents([...students, student]);
@@ -32,19 +36,32 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <aside className="sidebar">
+      <aside className={`sidebar ${menuOpen ? 'open' : ''}`}>
+        <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
         <h2>📚 Dashboard</h2>
         <ul>
-          <li onClick={() => setActiveTab('home')}>🏠 Home</li>
-          <li onClick={() => setActiveTab('add-student')}>👨‍🎓 Add Student</li>
-          <li onClick={() => setActiveTab('add-college')}>🏫 Add College</li>
-          <li onClick={() => setActiveTab('colleges')}>📋 View Colleges</li>
-          <li onClick={() => setActiveTab('students')}>👥 View Students</li>
+          <li className={activeTab === 'home' ? 'active-tab' : ''} onClick={() => setActiveTab('home')}>🏠 Home</li>
+          <li className={activeTab === 'add-student' ? 'active-tab' : ''} onClick={() => setActiveTab('add-student')}>👨‍🎓 Add Student</li>
+          <li className={activeTab === 'add-college' ? 'active-tab' : ''} onClick={() => setActiveTab('add-college')}>🏫 Add College</li>
+          <li className={activeTab === 'colleges' ? 'active-tab' : ''} onClick={() => setActiveTab('colleges')}>📋 View Colleges</li>
+          <li className={activeTab === 'students' ? 'active-tab' : ''} onClick={() => setActiveTab('students')}>👥 View Students</li>
         </ul>
       </aside>
 
       <main className="main-content">
-        {activeTab === 'home' && <h2>Welcome to the PU Student Dashboard</h2>}
+        {activeTab === 'home' && (
+          <div className="home-section">
+            <div className="lottie-wrapper">
+              <Lottie animationData={dashboardAnimation} loop={true} />
+            </div>
+            <h2>Welcome to the PU Student Dashboard</h2>
+            <p>Track student performance, college eligibility, and applications all in one place.</p>
+          </div>
+        )}
         {activeTab === 'add-student' && <AddStudent addStudent={addStudent} colleges={colleges} />}
         {activeTab === 'add-college' && <AddCollege addCollege={addCollege} />}
         {activeTab === 'colleges' && <CollegeList colleges={colleges} />}
@@ -56,7 +73,9 @@ const Dashboard = () => {
             onViewReport={setSelectedStudent}
           />
         )}
-        <StudentReport student={selectedStudent} onClose={() => setSelectedStudent(null)} />
+        {selectedStudent && (
+          <StudentReport student={selectedStudent} onClose={() => setSelectedStudent(null)} />
+        )}
       </main>
     </div>
   );

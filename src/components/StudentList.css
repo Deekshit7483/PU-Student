@@ -1,0 +1,72 @@
+/* StudentList.css */
+.student-list {
+    max-width: 1000px;
+    margin: 2rem auto;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .student-list h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+  }
+  
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+  
+  .filters input,
+  .filters select {
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+  
+  thead {
+    background-color: #0072c6;
+    color: white;
+  }
+  
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .clickable-id {
+    color: #0072c6;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  
+  .grade-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: white;
+    font-size: 0.9rem;
+  }
+  
+  .grade-badge.A { background-color: #28a745; }
+  .grade-badge.B { background-color: #17a2b8; }
+  .grade-badge.C { background-color: #ffc107; color: #333; }
+  .grade-badge.D { background-color: #fd7e14; }
+  .grade-badge.F { background-color: #dc3545; }
+  

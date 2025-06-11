@@ -1,0 +1,68 @@
+/* AddStudent.css */
+.form-section {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .form-section h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    color: #2d2f91;
+    margin-bottom: 1rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  input:focus {
+    border-color: #2d2f91;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(45, 47, 145, 0.1);
+  }
+  
+  button[type="submit"] {
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    background-color: #2d2f91;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #1b1c7a;
+  }
+  
+  /* Optional: Add Lottie animation container */
+  .lottie-wrapper {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 150px;
+    height: 150px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+  

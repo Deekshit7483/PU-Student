@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import './AddStudent.css';
+import { Player } from '@lottiefiles/react-lottie-player';
+import studentAnimation from '../assets/animation.json';
 
 const AddStudent = ({ addStudent, colleges }) => {
   const [name, setName] = useState('');
   const [marks, setMarks] = useState({ physics: '', chemistry: '', math: '' });
+  const [preview, setPreview] = useState(null);
 
   const handleChange = (e) => {
     setMarks({ ...marks, [e.target.name]: e.target.value });
@@ -22,7 +26,8 @@ const AddStudent = ({ addStudent, colleges }) => {
       else grade = 'F';
 
       const suggested = getSuggestedColleges(avg);
-      addStudent({
+
+      const studentData = {
         id: Date.now(),
         name,
         marks,
@@ -30,8 +35,12 @@ const AddStudent = ({ addStudent, colleges }) => {
         grade,
         suggested,
         appliedCollege: null,
-      });
+      };
 
+      addStudent(studentData);
+      setPreview(studentData);
+
+      // Reset fields
       setName('');
       setMarks({ physics: '', chemistry: '', math: '' });
     } else {
@@ -49,7 +58,17 @@ const AddStudent = ({ addStudent, colleges }) => {
 
   return (
     <div className="form-section">
+      <div className="lottie-wrapper">
+        <Player
+          autoplay
+          loop
+          src={studentAnimation}
+          style={{ height: '120px', width: '120px' }}
+        />
+      </div>
+
       <h2>Add Student</h2>
+
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -84,6 +103,22 @@ const AddStudent = ({ addStudent, colleges }) => {
         />
         <button type="submit">Add Student</button>
       </form>
+
+      {preview && (
+        <div className="preview-card">
+          <h3>🎓 {preview.name}'s Summary</h3>
+          <p><strong>Average:</strong> {preview.average}%</p>
+          <p><strong>Grade:</strong> {preview.grade}</p>
+          <p><strong>Suggested Colleges:</strong></p>
+          <ul>
+            {preview.suggested.length > 0 ? (
+              preview.suggested.map((college, idx) => <li key={idx}>{college}</li>)
+            ) : (
+              <li>No eligible colleges — improve performance</li>
+            )}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
