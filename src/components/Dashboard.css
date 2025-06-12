@@ -241,3 +241,84 @@ td {
       padding: 6px 2px;
   }
 }
+
+
+/* Dashboard Cards */
+.dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 2rem 0;
+}
+
+.dashboard-cards .card {
+  flex: 1;
+  min-width: 220px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+/* Recent, Alert, Top Students Sections */
+.recent-section,
+.alert-section,
+.top-section {
+  margin-bottom: 2rem;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.recent-section h3,
+.alert-section h3,
+.top-section h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.recent-section ul,
+.alert-section ul,
+.top-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.recent-section li,
+.alert-section li,
+.top-section li {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* Chart Section */
+.chart-section {
+  margin-top: 2rem;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.chart-section h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Animation wrapper (Lottie) */
+.lottie-wrapper {
+  max-width: 300px;
+  margin: 0 auto 2rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard-cards {
+    flex-direction: column;
+  }
+}

@@ -40,7 +40,10 @@ const CollegeList = ({ colleges }) => {
 
           return (
             <div key={college.id} className="college-card">
-              <h3>{college.name}</h3>
+              <div className="college-header">
+                <h3>{college.name}</h3>
+                <span className={`status-badge ${status.color}`}>{status.text}</span>
+              </div>
               <p><strong>Total Seats:</strong> {college.totalSeats}</p>
               <p><strong>Remaining Seats:</strong> {college.remainingSeats}</p>
 
@@ -50,10 +53,6 @@ const CollegeList = ({ colleges }) => {
                   style={{ width: `${status.percent}%` }}
                 ></div>
               </div>
-
-              <span className={`status-badge ${status.color}`}>
-                {status.text}
-              </span>
             </div>
           );
         })
