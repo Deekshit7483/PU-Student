@@ -38,7 +38,7 @@ There is no database connected. All data is stored in memory and will be lost up
 ```
 
 ```bash
-git clone https://github.com/your-username/pu-student-dashboard.git
+git clone https://github.com/Deekshit7483/PU-Student.git
 ```
 ```bash
 cd pu-student-dashboard
@@ -55,7 +55,7 @@ npm start
 ## 📬 Feedback
 
 Found a bug or want to suggest a feature?
-Feel free to open an [issue](https://github.com/Deekshit7483/pu-student-dashboard/issues) or contribute via pull requests!
+Feel free to open an [issue](https://github.com/Deekshit7483/PU-Student/issues) or contribute via pull requests!
 
 ---
 
