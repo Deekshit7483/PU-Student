@@ -57,7 +57,6 @@ body{
   overflow-x: auto;
 }
 
-/* Hamburger (menu toggle) */
 .menu-toggle {
   display: none;
   cursor: pointer;
@@ -213,7 +212,6 @@ td {
       font-size: 0.85rem;
   }
 
-  /* Responsive table */
   table {
       font-size: 0.8rem;
   }
@@ -243,7 +241,6 @@ td {
 }
 
 
-/* Dashboard Cards */
 .dashboard-cards {
   display: flex;
   flex-wrap: wrap;
@@ -263,7 +260,6 @@ td {
   color: #2c3e50;
 }
 
-/* Recent, Alert, Top Students Sections */
 .recent-section,
 .alert-section,
 .top-section {
@@ -296,7 +292,6 @@ td {
   color: #555;
 }
 
-/* Chart Section */
 .chart-section {
   margin-top: 2rem;
   background-color: #fff;
@@ -311,7 +306,6 @@ td {
   text-align: center;
 }
 
-/* Animation wrapper (Lottie) */
 .lottie-wrapper {
   max-width: 300px;
   margin: 0 auto 2rem;

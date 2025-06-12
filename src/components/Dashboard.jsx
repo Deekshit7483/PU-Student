@@ -4,8 +4,6 @@ import AddCollege from './AddCollege';
 import CollegeList from './CollegeList';
 import StudentList from './StudentList';
 import StudentReport from './StudentReport';
-import Lottie from 'lottie-react';
-import dashboardAnimation from '../assets/animation.json';
 import './Dashboard.css';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 
