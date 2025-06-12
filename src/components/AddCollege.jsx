@@ -2,26 +2,33 @@ import React, { useState } from 'react';
 import './AddCollege.css';
 import { Player } from '@lottiefiles/react-lottie-player';
 import collegeAnimation from '../assets/college.json';
+import loadingAnimation from '../assets/loading.json';
 
 const AddCollege = ({ addCollege }) => {
   const [name, setName] = useState('');
   const [seats, setSeats] = useState('');
   const [preview, setPreview] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const total = parseInt(seats);
     if (name && total > 0) {
-      const collegeData = {
-        id: Date.now(),
-        name,
-        totalSeats: total,
-        remainingSeats: total,
-      };
-      addCollege(collegeData);
-      setPreview(collegeData);
-      setName('');
-      setSeats('');
+      setLoading(true);
+
+      setTimeout(() => {
+        const collegeData = {
+          id: Date.now(),
+          name,
+          totalSeats: total,
+          remainingSeats: total,
+        };
+        addCollege(collegeData);
+        setPreview(collegeData);
+        setName('');
+        setSeats('');
+        setLoading(false);
+      }, 3000);
     }
   };
 
@@ -44,6 +51,7 @@ const AddCollege = ({ addCollege }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          disabled={loading}
         />
         <input
           type="number"
@@ -51,8 +59,21 @@ const AddCollege = ({ addCollege }) => {
           value={seats}
           onChange={(e) => setSeats(e.target.value)}
           required
+          disabled={loading}
         />
-        <button type="submit">Add College</button>
+
+        <button type="submit" disabled={loading}>
+          {loading ? (
+            <Player
+              autoplay
+              loop
+              src={loadingAnimation}
+              style={{ height: '32px', width: '32px' }}
+            />
+          ) : (
+            'Add College'
+          )}
+        </button>
       </form>
 
       {preview && (

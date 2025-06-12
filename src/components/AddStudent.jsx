@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import './AddStudent.css';
 import { Player } from '@lottiefiles/react-lottie-player';
 import studentAnimation from '../assets/student.json';
+import loadingAnimation from '../assets/loading.json';
 
 const AddStudent = ({ addStudent, colleges }) => {
   const [name, setName] = useState('');
   const [marks, setMarks] = useState({ physics: '', chemistry: '', math: '' });
   const [preview, setPreview] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setMarks({ ...marks, [e.target.name]: e.target.value });
@@ -16,33 +18,36 @@ const AddStudent = ({ addStudent, colleges }) => {
     e.preventDefault();
     const values = Object.values(marks).map(Number);
     if (values.every(mark => mark >= 0 && mark <= 100)) {
-      const total = values.reduce((a, b) => a + b, 0);
-      const avg = total / values.length;
-      let grade = '';
-      if (avg >= 90) grade = 'A';
-      else if (avg >= 80) grade = 'B';
-      else if (avg >= 70) grade = 'C';
-      else if (avg >= 50) grade = 'D';
-      else grade = 'F';
+      setLoading(true);
 
-      const suggested = getSuggestedColleges(avg);
+      setTimeout(() => {
+        const total = values.reduce((a, b) => a + b, 0);
+        const avg = total / values.length;
+        let grade = '';
+        if (avg >= 90) grade = 'A';
+        else if (avg >= 80) grade = 'B';
+        else if (avg >= 70) grade = 'C';
+        else if (avg >= 50) grade = 'D';
+        else grade = 'F';
 
-      const studentData = {
-        id: Date.now(),
-        name,
-        marks,
-        average: avg.toFixed(2),
-        grade,
-        suggested,
-        appliedCollege: null,
-      };
+        const suggested = getSuggestedColleges(avg);
 
-      addStudent(studentData);
-      setPreview(studentData);
+        const studentData = {
+          id: Date.now(),
+          name,
+          marks,
+          average: avg.toFixed(2),
+          grade,
+          suggested,
+          appliedCollege: null,
+        };
 
-      // Reset fields
-      setName('');
-      setMarks({ physics: '', chemistry: '', math: '' });
+        addStudent(studentData);
+        setPreview(studentData);
+        setName('');
+        setMarks({ physics: '', chemistry: '', math: '' });
+        setLoading(false);
+      }, 3000);
     } else {
       alert("Marks should be between 0 and 100.");
     }
@@ -59,12 +64,7 @@ const AddStudent = ({ addStudent, colleges }) => {
   return (
     <div className="form-section">
       <div className="lottie-wrapper">
-        <Player
-          autoplay
-          loop
-          src={studentAnimation}
-          style={{ height: '120px', width: '120px' }}
-        />
+        <Player autoplay loop src={studentAnimation} style={{ height: '170px', width: '170px' }} />
       </div>
 
       <h2>Add Student</h2>
@@ -76,6 +76,7 @@ const AddStudent = ({ addStudent, colleges }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          disabled={loading}
         />
         <input
           type="number"
@@ -84,6 +85,7 @@ const AddStudent = ({ addStudent, colleges }) => {
           value={marks.physics}
           onChange={handleChange}
           required
+          disabled={loading}
         />
         <input
           type="number"
@@ -92,6 +94,7 @@ const AddStudent = ({ addStudent, colleges }) => {
           value={marks.chemistry}
           onChange={handleChange}
           required
+          disabled={loading}
         />
         <input
           type="number"
@@ -100,8 +103,15 @@ const AddStudent = ({ addStudent, colleges }) => {
           value={marks.math}
           onChange={handleChange}
           required
+          disabled={loading}
         />
-        <button type="submit">Add Student</button>
+        <button type="submit" disabled={loading}>
+          {loading ? (
+            <Player autoplay loop src={loadingAnimation} style={{ height: 32, width: 32 }} />
+          ) : (
+            'Add Student'
+          )}
+        </button>
       </form>
 
       {preview && (

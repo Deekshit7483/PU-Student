@@ -1,4 +1,3 @@
-/* CollegeList.css */
 .college-list {
     max-width: 800px;
     margin: 2rem auto;
@@ -37,11 +36,9 @@
   .success {
     background-color: #28a745;
   }
-  
   .warning {
     background-color: #ffc107;
   }
-  
   .error {
     background-color: #dc3545;
   }
@@ -55,17 +52,43 @@
     font-weight: 600;
     color: white;
   }
+  .status-badge.success { background-color: #28a745; }
+  .status-badge.warning { background-color: #ffc107; color: #333; }
+  .status-badge.error { background-color: #dc3545; }
   
-  .status-badge.success {
-    background-color: #28a745;
+
+  .shimmer-colleges {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
   
-  .status-badge.warning {
-    background-color: #ffc107;
-    color: #333;
+  .shimmer-card {
+    height: 120px;
+    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+    border-radius: 10px;
   }
   
-  .status-badge.error {
-    background-color: #dc3545;
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
   }
+  
+  .no-data {
+    text-align: center;
+    margin-top: 2rem;
+    color: #666;
+  }
+  
+  .no-data p {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
   

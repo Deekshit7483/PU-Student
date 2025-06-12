@@ -1,4 +1,3 @@
-// Dashboard.js
 import React, { useState } from 'react';
 import AddStudent from './AddStudent';
 import AddCollege from './AddCollege';
