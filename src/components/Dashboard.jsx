@@ -62,9 +62,6 @@ const Dashboard = () => {
       <main className="main-content">
         {activeTab === 'home' && (
           <div className="home-section fade-in">
-            <div className="lottie-wrapper">
-              <Lottie animationData={dashboardAnimation} loop={true} />
-            </div>
             <h2>Welcome to the PU Student Dashboard</h2>
             <p>Track student performance, college eligibility, and applications all in one place.</p>
           </div>
